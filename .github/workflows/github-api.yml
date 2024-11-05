@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo "dummy"
-      - env:
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Github CLI用クレデンシャル
       # - run: gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}"
