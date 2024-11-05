@@ -3,6 +3,10 @@ on: push # イベント（この場pushで起動）
 jobs: # job定義
   hello: # jobID
     runs-on: ubuntu-latest # 実行環境
+    env:
+      USERNAME: ${{ vars.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
     steps: # ステップ定義
       - run: echo "Hello world."
+      - run: echo "${USERNAME} ${PASSWORD}"
       - uses: actions/checkout@v4
