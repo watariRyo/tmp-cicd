@@ -1,0 +1,14 @@
+name: GITHUB_API
+on: push
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    permissions: # GITHUB_TOKENの権限を指定
+      pull-requests: write # PR書き込み許可
+      contents: read # ソース読み取り許可
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "dummy"
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Github CLI用クレデンシャル
+      # - run: gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}"
