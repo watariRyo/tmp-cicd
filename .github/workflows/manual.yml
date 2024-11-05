@@ -1,0 +1,14 @@
+name: Manual
+on:
+  workflow_dispatch: # 手動実行イベント
+    inputs:
+      greeting: # 入力パラメータ名
+        type: string
+        default: Hello
+        required: true
+        description: A cheerful world
+jobs: # job定義
+  run: # jobID
+    runs-on: ubuntu-latest # 実行環境
+    steps: # ステップ定義
+      - run: echo "${{ inputs.greeting }}" # 入力パラメータ参照
