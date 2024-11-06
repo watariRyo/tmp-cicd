@@ -1,0 +1,14 @@
+name: Dump
+on: push
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # 呼び出し前チェックアウト
+      - uses: ./.github/actions/dump/ # ローカルアクション呼び出し
+        id: dump # 出力参照のためID定義
+        with:
+          enable-context: 'true' # 入力パラメータ
+      - run: echo "${DATE}"
+        env:
+          DATE: ${{ steps.dump.outputs.dumped-date }} # アクション出力値の参照
